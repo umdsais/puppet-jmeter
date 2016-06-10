@@ -21,17 +21,7 @@ class jmeter (
     redhat => "java-1.${java_version}.0-openjdk"
   }
 
-  package { $jdk_pkg:
-    ensure => present,
-  }
-
-  package { 'unzip':
-    ensure => present,
-  }
-
-  package { 'wget':
-    ensure => present,
-  }
+  ensure_resource('package', [$jdk_pkg, 'unzip', 'wget'], {'ensure' => 'present'})
 
   exec { 'download-jmeter':
     command => "wget -P /root http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${jmeter_version}.tgz",
