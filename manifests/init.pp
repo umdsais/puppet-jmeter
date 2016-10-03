@@ -11,15 +11,12 @@ class jmeter (
   $jmeter_plugins_install = false,
   $jmeter_plugins_version = '1.2.1',
   $jmeter_plugins_set     = ['Standard'],
-  $java_version           = '7',
-) {
+  $java_version           = $::jmeter::params::java_version,
+) inherits ::jmeter::params {
 
   Exec { path => '/bin:/usr/bin:/usr/sbin' }
 
-  $jdk_pkg = $::osfamily ? {
-    debian => "openjdk-${java_version}-jre-headless",
-    redhat => "java-1.${java_version}.0-openjdk"
-  }
+  $jdk_pkg = $::jmeter::params::jdk_pkg
 
   ensure_resource('package', [$jdk_pkg, 'unzip', 'wget'], {'ensure' => 'present'})
 

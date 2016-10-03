@@ -6,13 +6,13 @@
 #
 #   class { 'jmeter::server': }
 #
-class jmeter::server($server_ip = '0.0.0.0') {
+class jmeter::server (
+  $server_ip = '0.0.0.0'
+) inherits ::jmeter::params {
+
   include jmeter
 
-  $init_template = $::osfamily ? {
-    debian => 'jmeter/jmeter-init.erb',
-    redhat => 'jmeter/jmeter-init.redhat.erb'
-  }
+  $init_template = $::jmeter::params::init_template
 
   file { '/etc/init.d/jmeter':
     content => template($init_template),
