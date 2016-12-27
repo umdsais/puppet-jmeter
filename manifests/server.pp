@@ -40,6 +40,7 @@ class jmeter::server (
     ensure    => running,
     enable    => true,
     require   => File['/etc/init.d/jmeter'],
+    provider  => $jmeter::params::service_provider,
     subscribe => $jmeter_subscribe,
   }
 }
