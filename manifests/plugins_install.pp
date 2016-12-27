@@ -1,9 +1,9 @@
 define jmeter::plugins_install (
   $plugins_version,
   $plugins_set = $title,
+  $base_download_url = 'http://jmeter-plugins.org/downloads/file/'
   )
 {
-  $base_download_url = 'http://jmeter-plugins.org/downloads/file/'
   $plugins_file_base = "JMeterPlugins-${plugins_set}-${plugins_version}"
 
   exec { "download-jmeter-plugins-${plugins_set}":
