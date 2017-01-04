@@ -1,5 +1,8 @@
-Puppet JMeter
-=============
+# Puppet JMeter
+
+[![Build Status](https://travis-ci.org/dduvnjak/puppet-jmeter.svg?branch=master)](https://travis-ci.org/dduvnjak/puppet-jmeter)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/dduvnjak/jmeter.svg)](https://forge.puppet.com/dduvnjak/jmeter)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/dduvnjak/jmeter.svg)](https://forge.puppetlabs.com/dduvnjak/jmeter)
 
 This class installs the latest stable version of JMeter (currently v2.13) from apache.org. If you use the `::server` class, an init-file will be added to `/etc/init.d` and JMeter will be started in server mode listening on the default port.
 
