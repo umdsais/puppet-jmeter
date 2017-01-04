@@ -42,5 +42,5 @@ Morten Wulff
 <wulff@ratatosk.net>
 
 Dario Duvnjak   
-[@dduvnyak](https://twitter.com/dduvnyak)
+[@dduvnyak](https://twitter.com/dduvnyak)  
 http://dtk.io/
