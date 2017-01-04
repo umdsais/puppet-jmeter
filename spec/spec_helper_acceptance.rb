@@ -27,7 +27,7 @@ RSpec.configure do |c|
   # Configure all nodes in nodeset
   c.before :suite do
     hosts.each do |host|
-      copy_module_to(host, :source => proj_root, :module_name => 'ntp')
+      copy_module_to(host, :source => proj_root, :module_name => 'jmeter')
     end
   end
 end
