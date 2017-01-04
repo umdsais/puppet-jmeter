@@ -13,6 +13,7 @@ gem 'puppet', puppetversion, :require => false, :groups => [:test]
 
 gem 'puppet-lint', :require => false, :groups => [:development]
 gem 'metadata-json-lint', :require => false, :groups => [:development], :platforms => 'ruby'
+gem 'puppet-blacksmith', '>= 3.4.0', :require => false, :groups => [:development], :platforms => 'ruby'
 
 # Find a location or specific version for a gem. place_or_version can be a
 # version, which is most often used. It can also be git, which is specified as
