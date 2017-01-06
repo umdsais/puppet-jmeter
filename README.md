@@ -44,6 +44,5 @@ Authors
 Morten Wulff  
 <wulff@ratatosk.net>
 
-Dario Duvnjak   
-[@dduvnyak](https://twitter.com/dduvnyak)  
+Dario Duvnjak  
 http://dtk.io/
