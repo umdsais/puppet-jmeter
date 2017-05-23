@@ -14,16 +14,21 @@ class jmeter (
   $download_url           = 'http://archive.apache.org/dist/jmeter/binaries/',
   $plugin_url             = 'http://jmeter-plugins.org/downloads/file/',
   $java_version           = $::jmeter::params::java_version,
+  $manage_java            = $::jmeter::params::manage_java,
+  $jdk_pkg                = $::jmeter::params::jdk_pkg
 ) inherits ::jmeter::params {
 
   validate_re($download_url, '^((https?|ftps?):\/\/)([\da-z\.-]+)\.?([\da-z\.]{2,6})([\/\w \.\:-]*)*\/?$')
   validate_re($plugin_url, '^((https?|ftps?):\/\/)([\da-z\.-]+)\.?([\da-z\.]{2,6})([\/\w \.\:-]*)*\/?$')
+  validate_bool($manage_java)
 
   Exec { path => '/bin:/usr/bin:/usr/sbin' }
 
-  $jdk_pkg = $::jmeter::params::jdk_pkg
+  if $manage_java {
+    ensure_resource('package', $jdk_pkg, {'ensure' => 'present'})
+  }
 
-  ensure_resource('package', [$jdk_pkg, 'unzip', 'wget'], {'ensure' => 'present'})
+  ensure_resource('package', ['unzip', 'wget'], {'ensure' => 'present'})
 
   exec { 'download-jmeter':
     command => "wget -P /root ${download_url}/apache-jmeter-${jmeter_version}.tgz",
