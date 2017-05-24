@@ -1,4 +1,7 @@
 class jmeter::params {
+
+  $manage_java = true
+
   case $::osfamily {
     'Debian' : {
       $init_template = 'jmeter/jmeter-init.erb'
