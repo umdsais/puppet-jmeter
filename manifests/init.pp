@@ -25,10 +25,23 @@ class jmeter (
   Exec { path => '/bin:/usr/bin:/usr/sbin' }
 
   if $manage_java {
-    ensure_resource('package', $jdk_pkg, {'ensure' => 'present'})
+  if ! defined(Package[$jdk_pkg]) {
+    package { $jdk_pkg:
+      ensure => installed,
+    }
+  }
   }
 
-  ensure_resource('package', ['unzip', 'wget'], {'ensure' => 'present'})
+  if ! defined(Package['unzip']) {
+    package { 'unzip':
+      ensure => installed,
+    }
+  }
+  if ! defined(Package['wget']) {
+    package { 'wget':
+      ensure => installed,
+    }
+  }
 
   exec { 'download-jmeter':
     command => "wget -P /root ${download_url}/apache-jmeter-${jmeter_version}.tgz",
